@@ -1,0 +1,14 @@
+{
+  "testUser": {
+    "firstName": "Ini",
+    "lastName": "Smith",
+    "email": "Ini.Smith133@email.com",
+    "password": "aOCM)2*0"
+  },
+  "testUser2": {
+    "firstName": "Sarah",
+    "lastName": "Fujimoto",
+    "email": "Sarah.Fujimoto516@email.com",
+    "password": "R4QH%YPu"
+  }
+}
