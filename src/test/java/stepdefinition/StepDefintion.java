@@ -109,7 +109,7 @@ public class StepDefintion
     public void userLogsBackInWithPreviousCredentials() throws InterruptedException
     {
         driver.get("https://demowebshop.tricentis.com/login");
-        UserData registered = EmailStorage.getUser("testUser");
+        UserData registered = EmailStorage.getUser("testUser3");
         login = new LoginPOM(driver);
 
         login.sendUserName(registered.getEmail());
