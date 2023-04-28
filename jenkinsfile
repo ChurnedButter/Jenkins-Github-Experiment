@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "mvn test -Dcucumber.filter.tags='${params.SCENARIO_TAG}'"
+                sh "/usr/local/bin/mvn test -Dcucumber.filter.tags='${params.SCENARIO_TAG}'"
             }
             post {
                 always {
