@@ -54,4 +54,3 @@ public class LaptopPOM
 
     public void clickShoppingCart() {shoppingCart.click();}
 }
-

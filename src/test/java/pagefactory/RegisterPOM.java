@@ -103,5 +103,4 @@ public class RegisterPOM
     public void clickConBtn() { conBtn.click(); }
 
     public void clickLogout() {logout.click();}
-
 }
