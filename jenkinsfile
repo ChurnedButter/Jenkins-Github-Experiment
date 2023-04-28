@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+     parameters {
+            choice(name: 'TAG', choices: ['@register', '@login', '@checkout'], description: 'Select the Cucumber tag to run')
+        }
+
     stages {
         stage('Checkout') {
             steps {
@@ -16,16 +20,7 @@ pipeline {
             steps {
                 sh "/usr/local/bin/mvn test -Dcucumber.filter.tags='${params.SCENARIO_TAG}'"
             }
-            post {
-                always {
-                    cucumber(
-                          buildStatus: 'UNSTABLE',
-                          fileIncludePattern: '**/*.json',
-                          jsonReportDirectory: 'target/cucumber-reports/',
-                          reportTitle: 'Cucumber Test Results'
-                        )
-                }
-            }
+
         }
     }
 }
