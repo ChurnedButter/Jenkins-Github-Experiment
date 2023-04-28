@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "/usr/local/bin/mvn test -Dcucumber.filter.tags='${TAG}'"
+                sh "/usr/local/bin/mvn -U test -Dcucumber.filter.tags='${TAG}'"
                 sh "pwd"
                 sh "ls -la target/cucumber-reports/"
             }
