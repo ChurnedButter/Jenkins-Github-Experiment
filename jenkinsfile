@@ -13,12 +13,19 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh '/usr/local/bin/mvn clean compile'
+                sh '/usr/local/bin/mvn -U clean compile'
             }
         }
         stage('Test') {
             steps {
-                sh "/usr/local/bin/mvn -U test -Dcucumber.filter.tags='${TAG}'"
+                script {
+                    try {
+                        sh "/usr/local/bin/mvn -U test -Dcucumber.filter.tags='${TAG}'"
+                    } catch (Exception e) {
+                        echo "Tests failed. Check the output for more information."
+                        throw e
+                    }
+                }
                 sh "pwd"
                 sh "ls -la target/cucumber-reports/"
             }
