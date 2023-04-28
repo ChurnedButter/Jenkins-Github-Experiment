@@ -18,7 +18,12 @@ pipeline {
             }
             post {
                 always {
-                    step([$class: 'Publisher', reportFilenamePattern: '**/test-output/testng-results.xml'])
+                    cucumber(
+                          buildStatus: 'UNSTABLE',
+                          fileIncludePattern: '**/*.json',
+                          jsonReportDirectory: 'target/cucumber-reports/',
+                          reportTitle: 'Cucumber Test Results'
+                        )
                 }
             }
         }

@@ -6,9 +6,15 @@
     "password": "aOCM)2*0"
   },
   "testUser2": {
-    "firstName": "Sarah",
-    "lastName": "Fujimoto",
-    "email": "Sarah.Fujimoto516@email.com",
-    "password": "R4QH%YPu"
+    "firstName": "Antonio",
+    "lastName": "Akiloye",
+    "email": "Antonio.Akiloye224@email.com",
+    "password": "Eg3JDt4O"
+  },
+  "testUser3": {
+    "firstName": "Minerva",
+    "lastName": "Waheed",
+    "email": "Minerva.Waheed634@gmail.com",
+    "password": "Mn34jsFs"
   }
 }
