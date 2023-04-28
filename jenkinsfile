@@ -19,10 +19,12 @@ pipeline {
         stage('Test') {
             steps {
                 sh "/usr/local/bin/mvn test -Dcucumber.filter.tags='${TAG}'"
+                sh "pwd"
+                sh "ls -la target/cucumber-reports/"
             }
         post {
             always {
-                cucumber 'target/cucumber-reports/*.json'
+                cucumber '**/target/cucumber-reports/*.json'
             }
           }
         }
