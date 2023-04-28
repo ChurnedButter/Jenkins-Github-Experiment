@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-     parameters {
-            choice(name: 'TAG', choices: ['@register', '@login', '@checkout'], description: 'Select the Cucumber tag to run')
-        }
+    parameters {
+        choice(name: 'TAG', choices: ['@register', '@login', '@checkout'], description: 'Select the Cucumber tag to run')
+    }
 
     stages {
         stage('Checkout') {
@@ -13,27 +13,23 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh '/usr/local/bin/mvn -U clean compile'
+                sh '/usr/local/bin/mvn clean compile'
             }
         }
         stage('Test') {
             steps {
-                script {
-                    try {
-                        sh "/usr/local/bin/mvn -U test -Dcucumber.filter.tags='${TAG}'"
-                    } catch (Exception e) {
-                        echo "Tests failed. Check the output for more information."
-                        throw e
-                    }
-                }
-                sh "pwd"
-                sh "ls -la target/cucumber-reports/"
+                sh "/usr/local/bin/mvn test -Dcucumber.filter.tags='${TAG}'"
             }
+        }
+        stage('Generate Reports') {
+            steps {
+                sh "mvn -Dtest=runner test -Dcucumber.options=\"--plugin json:target/cucumber-reports/cucumber.json --tags ${TAG}\""
+            }
+        }
         post {
             always {
-                cucumber '**/target/cucumber-reports/*.json'
+                cucumber 'target/cucumber-reports/*.json'
             }
-          }
         }
     }
 }
